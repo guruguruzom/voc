@@ -6,8 +6,15 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+import com.example.java.was.dto.VocDto;
+
 @Data
+@DynamicInsert
 @AllArgsConstructor
+@EnableJpaAuditing
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="voc")
 public class VocVo {
@@ -20,10 +27,11 @@ public class VocVo {
 	private String target;
 	private Integer workerId;
 	private Integer vendorId;
+	
+	@Column(columnDefinition = "timestamp default 'CURRENT_TIMESTAMP'")
 	private Date createAt;
 	
-	public VocVo() {}
-	
+
 	@Builder
 	public VocVo(String userKey,String reason,String target,int workerId,int vendorId,Date createAt) {
 		
