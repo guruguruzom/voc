@@ -27,14 +27,12 @@ public class PenaltyVo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private Long vocId;
-	private Long workerId;
 	private String state;
 	private Date createAt;
 	
 	@Builder
-	public PenaltyVo(Long vocId,Long workerId,String state) {
+	public PenaltyVo(Long vocId,String state) {
 		this.vocId = vocId;
-		this.workerId = workerId;
 		this.state = state;
 	}
 }
