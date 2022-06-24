@@ -3,7 +3,7 @@ package com.example.java.was.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.java.was.dto.CompensationDto;
+import com.example.java.was.domain.CompensationDto;
 import com.example.java.was.entity.CompensationVo;
 import com.example.java.was.repository.CompensationRepository;
 import com.example.java.was.service.impl.CompensationServiceImpl;

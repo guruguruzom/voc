@@ -1,6 +1,6 @@
 package com.example.java.was.service.impl;
 
-import com.example.java.was.dto.PenaltyDto;
+import com.example.java.was.domain.PenaltyDto;
 import com.example.java.was.valueset.SuccessState;
 
 public interface PenaltyServiceImpl {

@@ -9,7 +9,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import com.example.java.was.dto.VocDto;
+import com.example.java.was.domain.VocDto;
 
 @Data
 @DynamicInsert

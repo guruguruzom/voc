@@ -29,7 +29,7 @@ public class PenaltyController {
 	 * 2000 : 패널티 등록
 	 */
 	@PostMapping("/penalty/regist/{vocId}")
-	public HashMap<String, Object> registration(@PathVariable("vocId") Long vocId) {
+	public HashMap<String, Object> regist(@PathVariable("vocId") Long vocId) {
 		
 		logger.info("penalty regist : " + vocId);
 		

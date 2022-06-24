@@ -1,15 +1,10 @@
 package com.example.java.was.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -25,22 +20,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EnableJpaAuditing
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name="penalty")
-public class PenaltyVo {
+public class WorkerVo {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long vocId;
-	private String state;
+	private String name;
+	private String contact;
 	private Date createAt;
 	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id")
-    private VocVo voc;
-	
 	@Builder
-	public PenaltyVo(Long vocId,String state) {
-		this.vocId = vocId;
-		this.state = state;
+	public WorkerVo(String name, String contact, Date createAt) {
+		this.name = name;
+		this.contact = contact;
+		this.createAt = createAt;
 	}
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.java.was.dto.PenaltyDto;
+import com.example.java.was.domain.PenaltyDto;
 import com.example.java.was.entity.PenaltyVo;
 import com.example.java.was.repository.PenaltyRepository;
 import com.example.java.was.service.impl.PenaltyServiceImpl;
@@ -19,7 +19,7 @@ public class PenaltyService implements PenaltyServiceImpl{
 	
 	public SuccessState setPenalty(Long vocId) {
 
-		if(penaltyRepository.findByVocId(vocId).isEmpty()) { // 값 존재여부 확인
+		if(!penaltyRepository.findByVocId(vocId).isEmpty()) { // 값 존재여부 확인
             return SuccessState.FAILED_EXISTS;
         } else {
         	PenaltyVo penaltyVo = PenaltyVo.builder()
