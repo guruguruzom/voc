@@ -27,8 +27,6 @@ public class VocVo {
 	private String target;
 	private Integer workerId;
 	private Integer vendorId;
-	
-	@Column(columnDefinition = "timestamp default 'CURRENT_TIMESTAMP'")
 	private Date createAt;
 	
 

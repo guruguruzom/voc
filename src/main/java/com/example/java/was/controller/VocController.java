@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.java.was.dto.VocDto;
-import com.example.java.was.service.impl.VocServiceImpl;
+import com.example.java.was.service.VocService;
 
 @RestController
 public class VocController {
 
 	private static Logger logger = LoggerFactory.getLogger(VocController.class);
 	
-	@Autowired VocServiceImpl vocServiceImpl;
+	@Autowired VocService vocService;
 	
 	/**
-	 * 1001 : voc 등록
+	 * 1000 : voc 등록
 	 */
-	@PostMapping("/api/registration")
+	@PostMapping("/voc/regist")
     public void registration(@RequestBody VocDto vocDto) {
 		
-		logger.info("service class Hello : " + vocDto.toString());
+		logger.info("voc registration : " + vocDto.toString());
 		
 		System.out.println(vocDto.toString());
 		System.out.println(vocDto.getReason());
-		vocServiceImpl.setVoc(vocDto);
+		vocService.setVoc(vocDto);
     }
 	
 }
