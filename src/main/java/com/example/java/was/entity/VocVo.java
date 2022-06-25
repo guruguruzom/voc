@@ -25,13 +25,19 @@ public class VocVo {
 	private String userKey;
 	private String reason;
 	private String target;
-	private Integer workerId;
-	private Integer vendorId;
+	private Long workerId;
+	private Long vendorId;
 	private Date createAt;
 	
-
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinTable(name = "penalty", //조인테이블명
+            joinColumns = @JoinColumn(name="voc_id"),  //외래키
+            inverseJoinColumns = @JoinColumn(name="id") //반대 엔티티의 외래키
+            )
+	private PenaltyVo penalty;
+	
 	@Builder
-	public VocVo(String userKey,String reason,String target,int workerId,int vendorId,Date createAt) {
+	public VocVo(String userKey,String reason,String target,Long workerId,Long vendorId,Date createAt) {
 		
 		this.userKey = userKey;
 		this.reason = reason;

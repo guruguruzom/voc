@@ -2,11 +2,13 @@ package com.example.java.was.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -23,22 +25,23 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EnableJpaAuditing
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CourierVocVo {
+@Entity(name = "courier")
+public class CourierVo {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String contact;
 	private String address;
 	private Date createAt;
-	
+
+
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id")
-    private WorkerVo worker;
-	
-	
+	@JoinColumn(name = "id")
+	private WorkerVo worker;
+
 	@Builder
-	public CourierVocVo(String name, String contact,String address, Date createAt) {
+	public CourierVo(String name, String contact, String address, Date createAt) {
 		this.name = name;
 		this.contact = contact;
 		this.address = address;

@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.example.java.was.domain.ParamSet;
 import com.example.java.was.domain.VocDto;
-import com.example.java.was.valueset.SuccessState;
+import com.example.java.was.valueset.ResponseCode;
 
 public interface VocServiceImpl {
 
-	public SuccessState setVoc(VocDto vocDto);
+	public HashMap<String, Object> setVoc(VocDto vocDto);
 	public HashMap<String, Object> getVocList();
-	public HashMap<String, Object> getVoc(Long vocId);
+	public HashMap<String, Object> getVoc(Long vocId) throws Exception;
 	public VocDto getVoc();
 }

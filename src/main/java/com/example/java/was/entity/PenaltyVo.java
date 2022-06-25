@@ -2,6 +2,7 @@ package com.example.java.was.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,13 +31,11 @@ public class PenaltyVo {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@Column (name = "voc_id")
 	private Long vocId;
 	private String state;
 	private Date createAt;
-	
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="id")
-    private VocVo voc;
+
 	
 	@Builder
 	public PenaltyVo(Long vocId,String state) {

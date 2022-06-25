@@ -2,6 +2,7 @@ package com.example.java.was.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EnableJpaAuditing
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class VendorVocVo {
+@Entity(name="vendor")
+public class VendorVo {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +34,10 @@ public class VendorVocVo {
 	private String contact;
 	private String address;
 	private Date createAt;
-    
+
 	
 	@Builder
-	public VendorVocVo(String name, String contact,String address, Date createAt) {
+	public VendorVo(String name, String contact,String address, Date createAt) {
 		this.name = name;
 		this.contact = contact;
 		this.address = address;

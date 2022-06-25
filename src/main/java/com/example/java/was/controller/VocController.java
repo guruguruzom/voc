@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.java.was.domain.ParamSet;
 import com.example.java.was.domain.VocDto;
 import com.example.java.was.service.VocService;
-import com.example.java.was.util.ResponseMap;
-import com.example.java.was.valueset.SuccessState;
 
 @RestController
 @ResponseBody
@@ -36,9 +33,7 @@ public class VocController {
 		
 		logger.info("voc regist : " + vocDto.toString());
 		
-		SuccessState successState = vocService.setVoc(vocDto);
-		
-		return ResponseMap.getResponseMap(successState);
+		return vocService.setVoc(vocDto);
     }
 	
 	/**
@@ -48,24 +43,21 @@ public class VocController {
     public HashMap<String, Object> vocList() {
 		
 		
-		//logger.info("voc list : " + paramSet.toString());
+		logger.info("voc list : ");
 		
 		return vocService.getVocList();
-		
-		//return ResponseMap.getResponseMap(successState.su);
     }
 	
 	/**
 	 * 1002 : voc 상세 조회
+	 * @throws Exception 
 	 */
 	@GetMapping("/voc/{vocId}")
-    public HashMap<String, Object> getVoc(@PathVariable("vocId") Long vocId) {
+    public HashMap<String, Object> getVoc(@PathVariable("vocId") Long vocId) throws Exception {
 		
-		logger.info("voc : " + vocId);
+		logger.info("voc detail : " + vocId);
 		
 		return vocService.getVoc(vocId);
-		
-		//return ResponseMap.getResponseMap(successState.su);
     }
 }
 

@@ -1,6 +1,6 @@
 package com.example.java.was.valueset;
 
-public enum SuccessState {
+public enum ResponseCode {
 	SUCCESS(100,"success"),
 	FAILED_NOT_FOUND(200,"failed not found"),
 	FAILED_EXISTS(201,"failed exists");
@@ -21,13 +21,13 @@ public enum SuccessState {
 		return code == 100;
 	}
 	
-	SuccessState(int code, String message){
+	ResponseCode(int code, String message){
 		this.code = code;
 		this.message = message;
 	}
 	
-	public static SuccessState getEnumFromString(int code) throws Exception {
-		for(SuccessState ps : SuccessState.values()) {
+	public static ResponseCode getEnumFromString(int code) throws Exception {
+		for(ResponseCode ps : ResponseCode.values()) {
 			if(ps.getCode() == code) {
 				return ps;
 			}

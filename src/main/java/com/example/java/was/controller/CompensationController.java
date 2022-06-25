@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.java.was.domain.CompensationDto;
 import com.example.java.was.service.CompensationService;
 import com.example.java.was.util.ResponseMap;
-import com.example.java.was.valueset.SuccessState;
+import com.example.java.was.valueset.ResponseCode;
 
 @RestController
 @ResponseBody
@@ -31,10 +31,8 @@ public class CompensationController {
     public HashMap<String, Object> registration(@RequestBody CompensationDto compensationDto) {
 		
 		logger.info("compensation registration : " + compensationDto.toString());
-		
-		SuccessState successState = compensationService.setCompensation(compensationDto);
-		
-		return ResponseMap.getResponseMap(successState);
+	
+		return compensationService.setCompensation(compensationDto);
     }
 	
 }

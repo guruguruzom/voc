@@ -10,6 +10,6 @@ public class VocDto {
 	private String userKey;
 	private String reason;
 	private String target;
-	private Integer workerId;
-	private Integer vendorId;
+	private Long workerId;
+	private Long vendorId;
 }

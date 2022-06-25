@@ -1,8 +1,10 @@
 package com.example.java.was.service.impl;
 
+import java.util.HashMap;
+
 import com.example.java.was.domain.CompensationDto;
-import com.example.java.was.valueset.SuccessState;
+import com.example.java.was.valueset.ResponseCode;
 
 public interface CompensationServiceImpl {
-	public SuccessState setCompensation(CompensationDto compensationDto);
+	public HashMap<String, Object> setCompensation(CompensationDto compensationDto);
 }

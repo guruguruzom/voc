@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.java.was.service.PenaltyService;
-import com.example.java.was.util.ResponseMap;
-import com.example.java.was.valueset.SuccessState;
 
 @RestController
 @ResponseBody
@@ -33,14 +31,7 @@ public class PenaltyController {
 		
 		logger.info("penalty regist : " + vocId);
 		
-		SuccessState successState = penaltyService.setPenalty(vocId);
-		
-		return ResponseMap.getResponseMap(successState);
-//		if(successState.isSuccess(successState.getCode())) {
-//			
-//		} else {
-//			return ResponseMap.getResponseMap(successState);
-//		}
+		return penaltyService.setPenalty(vocId);
 	}
 	
 	/**
@@ -52,8 +43,6 @@ public class PenaltyController {
 		
 		logger.info("state set : " + vocId);
 		
-		SuccessState successState = penaltyService.setState(vocId,stateCode);
-		
-		return ResponseMap.getResponseMap(successState);
+		return penaltyService.setState(vocId,stateCode);
 	}
 }
