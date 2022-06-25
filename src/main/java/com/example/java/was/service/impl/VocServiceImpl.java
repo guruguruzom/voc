@@ -9,8 +9,7 @@ import com.example.java.was.valueset.ResponseCode;
 
 public interface VocServiceImpl {
 
-	public HashMap<String, Object> setVoc(VocDto vocDto);
-	public HashMap<String, Object> getVocList();
+	public HashMap<String, Object> setVoc(VocDto vocDto) throws Exception;
+	public HashMap<String, Object> getVocList() throws Exception;
 	public HashMap<String, Object> getVoc(Long vocId) throws Exception;
-	public VocDto getVoc();
 }

@@ -25,35 +25,42 @@ public class VocController {
 	
 	@Autowired VocService vocService;
 	
-	/**
+	/***
 	 * 1000 : voc 등록
+	 * @param vocDto
+	 * @return
+	 * @throws Exception
 	 */
 	@PostMapping("/voc/regist")
-    public HashMap<String, Object> regist(@RequestBody VocDto vocDto) {
+    public HashMap<String, Object> regist(@RequestBody VocDto vocDto) throws Exception {
 		
 		logger.info("voc regist : " + vocDto.toString());
 		
 		return vocService.setVoc(vocDto);
     }
-	
-	/**
+
+	/***
 	 * 1001 : voc 목록 조회
+	 * @return
+	 * @throws Exception
 	 */
 	@GetMapping("/voc/list")
-    public HashMap<String, Object> vocList() {
-		
+    public HashMap<String, Object> vocList() throws Exception {
 		
 		logger.info("voc list : ");
 		
 		return vocService.getVocList();
     }
 	
-	/**
+
+	/***
 	 * 1002 : voc 상세 조회
-	 * @throws Exception 
+	 * @param vocId
+	 * @return
+	 * @throws Exception
 	 */
 	@GetMapping("/voc/{vocId}")
-    public HashMap<String, Object> getVoc(@PathVariable("vocId") Long vocId) throws Exception {
+    public HashMap<String, Object> getVoc(@PathVariable("vocId") Long vocId) throws Exception  {
 		
 		logger.info("voc detail : " + vocId);
 		
