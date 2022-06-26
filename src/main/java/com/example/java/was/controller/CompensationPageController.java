@@ -18,7 +18,12 @@ public class CompensationPageController {
 	
 	@Autowired CompensationService compensationService;
 	
-	
+	/***
+	 * 3100 : 배상정보 리스트 페이지
+	 * @param compensationDto
+	 * @return
+	 * @throws Exception
+	 */
 	@GetMapping("/compensation/list")
 	public String l(Model model) throws Exception {
 		
@@ -30,12 +35,4 @@ public class CompensationPageController {
 	
 		return "compensation/list";
     }
-	
-//	@GetMapping("/compensation/list")
-//	public HashMap<String, Object> registration() throws Exception {
-//		
-//		logger.info("compensation list : ");
-//	
-//		return compensationService.getCompensationList();
-//    }
 }

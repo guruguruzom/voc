@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.java.was.service.VocService;
 
@@ -21,7 +19,11 @@ public class VocPageController {
 	
 	@Autowired VocService vocService;
 	
-	
+	/***
+	 * 1000 : voc 등록
+	 * @return
+	 * @throws Exception
+	 */
 	@GetMapping("/voc/regist")
 	public String regist(Model model) throws Exception {
 		
@@ -69,15 +71,4 @@ public class VocPageController {
 		
 		return "voc/info";
     }
-//	@ResponseBody
-//	@GetMapping("/voc/{vocId}")
-//    public HashMap<String, Object> getVoc(@PathVariable("vocId") Long vocId) throws Exception  {
-//		
-//		logger.info("voc detail : " + vocId);
-//		
-//		HashMap<String, Object> map = vocService.getVoc(vocId);
-//		
-//		
-//		return map;
-//    }
 }

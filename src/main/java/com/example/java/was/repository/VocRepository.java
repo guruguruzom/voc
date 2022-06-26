@@ -12,8 +12,4 @@ import com.example.java.was.entity.VocVo;
 
 @Repository
 public interface VocRepository extends JpaRepository<VocVo, Long>{
-//	@Query(value="SELECT v FROM voc v "
-//			+ "LEFT JOIN FETCH v.compensation c "
-//			+ "WHERE c.vocId=:vocId")
-//	Optional<VocVo> findByIdVocId(@Param("vocId") Long vocId);
 }

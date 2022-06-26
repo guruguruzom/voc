@@ -37,6 +37,7 @@ public class CompensationService implements CompensationServiceImpl{
 	}	
 	
 	public HashMap<String, Object> getCompensationList() throws Exception{
+		
 		List<CompensationVo> CompensationVos = compensationRepository.findAll(); 
 		
 		return ResponseMap.getResponseMap(ResponseCode.SUCCESS, CompensationVos);

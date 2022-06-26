@@ -30,9 +30,6 @@ public class VocVo {
 	private Date createAt;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-//	@JoinTable(name = "compensation",
-//            joinColumns = @JoinColumn(name="voc_id"),
-//            inverseJoinColumns = @JoinColumn(name = "id"))
 	@JoinColumn(name = "id")
 	private CompensationVo compensation;
 	

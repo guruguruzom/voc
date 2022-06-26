@@ -5,9 +5,6 @@ import java.util.HashMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.java.was.domain.RegistDto;
 import com.example.java.was.domain.VocDto;
 import com.example.java.was.service.VocService;
 
@@ -38,11 +34,11 @@ public class VocController {
 	 */
 	
 	@PostMapping("/voc/regist")
-    public HashMap<String, Object> regist(@RequestBody RegistDto registDto) throws Exception {
+    public HashMap<String, Object> regist(@RequestBody VocDto vocDto) throws Exception {
 		
-		logger.info("voc regist : " + registDto.toString());
+		logger.info("voc regist : " + vocDto.toString());
 		
-		return vocService.setVoc(registDto);
+		return vocService.setVoc(vocDto);
     }
 	
 	/***
