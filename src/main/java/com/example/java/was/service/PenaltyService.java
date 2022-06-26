@@ -29,12 +29,12 @@ public class PenaltyService implements PenaltyServiceImpl{
 	public HashMap<String, Object> setPenalty(Long vocId, PenaltyDto penaltyDto) throws Exception {
 
 		penaltyRepository.findByVocId(vocId);
-		if(!penaltyRepository.findByVocId(vocId).isEmpty()) { // °ª Á¸Àç¿©ºÎ È®ÀÎ
+		if(!penaltyRepository.findByVocId(vocId).isEmpty()) { // ï¿½ï¿½ ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½ È®ï¿½ï¿½
             return ResponseMap.getResponseMap(ResponseCode.FAILED_EXISTS);
         } else {
-        	//FCM ¹Ì¿¬°á·Î ÀÎÇÑ penaltyDto °¡»óÀÇ push ¹ß¼Û
-        	//TargetCode.COURIER ¹è¼Û»ç Ã¥ÀÓ
-        	//TargetCode.VENDOR °í°´»ç Ã¥ÀÓ
+        	//FCM ê°€ìƒ
+        	//TargetCode.COURIER ï¿½ï¿½Û»ï¿½ Ã¥ï¿½ï¿½
+        	//TargetCode.VENDOR ï¿½ï¿½ï¿½ï¿½ Ã¥ï¿½ï¿½
         	if(TargetCode.getEnumFromString(penaltyDto.getTarget()) == TargetCode.COURIER) {
         		penaltyDto.getTarget();
         		
@@ -61,7 +61,7 @@ public class PenaltyService implements PenaltyServiceImpl{
 	
 	public HashMap<String, Object> setState(Long vocId, String stateCode) throws Exception{
 		
-		if(penaltyRepository.findById(vocId).isEmpty()) { // °ª Á¸Àç¿©ºÎ È®ÀÎ
+		if(penaltyRepository.findById(vocId).isEmpty()) { // ï¿½ï¿½ ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½ È®ï¿½ï¿½
             return ResponseMap.getResponseMap(ResponseCode.FAILED_NOT_FOUND);
         } else {
         	PenaltyVo penaltyVo = PenaltyVo.builder()

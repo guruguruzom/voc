@@ -26,7 +26,7 @@ public class PenaltyController {
 	@Autowired PenaltyService penaltyService;
 	
 	/***
-	 * 2000 : ÆÐ³ÎÆ¼ µî·Ï
+	 * 2000 : ï¿½Ð³ï¿½Æ¼ ï¿½ï¿½ï¿½
 	 * @param vocId
 	 * @param penaltyDto
 	 * @return
@@ -40,19 +40,5 @@ public class PenaltyController {
 		return penaltyService.setPenalty(vocId,penaltyDto);
 	}
 	
-	/***
-	 * 2001 : ÆÐ³ÎÆ¼ È®ÀÎ ¿©ºÎ ¹× ÀÌÀÇ Á¦±â
-	 * @param vocId
-	 * @param stateCode
-	 * @return
-	 * @throws Exception
-	 */
-	@PutMapping("/penalty/state/{vocId}")
-	public HashMap<String, Object> registration(@PathVariable("vocId") Long vocId,
-			@RequestParam(value="stateCode",required=false, defaultValue="none") String stateCode) throws Exception {
-		
-		logger.info("state set : " + vocId);
-		
-		return penaltyService.setState(vocId,stateCode);
-	}
+	
 }

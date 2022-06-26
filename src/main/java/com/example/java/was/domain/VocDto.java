@@ -12,8 +12,9 @@ import lombok.ToString;
 @Data
 @ToString
 public class VocDto {
-	
+	private Long id;
 	private String userKey;
+	private String state;
 	private String reason;
 	private String target;
 	private Long workerId;
@@ -23,8 +24,10 @@ public class VocDto {
 	private CourierVo courier;
 	
 	public VocDto(VocVo vocVo, VendorVo vendorVo, CourierVo courierVo) {
+		this.id = vocVo.getId();
 		this.reason = vocVo.getReason();
 		this.target = vocVo.getTarget();
+		this.state = vocVo.getState();
 		this.createAt = vocVo.getCreateAt();
 		this.vendor = vendorVo;
 		this.courier = courierVo;

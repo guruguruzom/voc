@@ -12,4 +12,5 @@ public interface VocServiceImpl {
 	public HashMap<String, Object> setVoc(VocDto vocDto) throws Exception;
 	public HashMap<String, Object> getVocList() throws Exception;
 	public HashMap<String, Object> getVoc(Long vocId) throws Exception;
+	public HashMap<String, Object> setState(Long vocId, String stateCode) throws Exception;
 }

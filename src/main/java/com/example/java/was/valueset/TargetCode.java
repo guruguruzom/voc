@@ -1,6 +1,10 @@
 package com.example.java.was.valueset;
 
 public enum TargetCode {
+	/*
+	 * courier:배송사
+	 * vendor:고객사
+	 * */
 	COURIER("courier"),
 	VENDOR("vendor");
 	

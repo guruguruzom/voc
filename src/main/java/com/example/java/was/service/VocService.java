@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.java.was.domain.VocDto;
 import com.example.java.was.entity.CourierVo;
+import com.example.java.was.entity.PenaltyVo;
 import com.example.java.was.entity.VendorVo;
 import com.example.java.was.entity.VocVo;
 import com.example.java.was.repository.CourierRepository;
@@ -45,11 +46,13 @@ public class VocService implements VocServiceImpl{
 		return ResponseMap.getResponseMap(ResponseCode.SUCCESS);
 	}
 	
+	
 	public HashMap<String, Object> getVocList()  throws Exception{
 		List<VocVo> vocVos = vocRepository.findAll();
 		
 		return ResponseMap.getResponseMap(ResponseCode.SUCCESS, vocVos);
 	}
+	
 	
 	public HashMap<String, Object> getVoc(Long vocId)  throws Exception{
 		Optional<VocVo> vocVo = vocRepository.findById(vocId);
@@ -58,12 +61,29 @@ public class VocService implements VocServiceImpl{
 			return  ResponseMap.getResponseMap(ResponseCode.FAILED_NOT_FOUND);
 		} 
 		
-		/*join ¹®ÀÌ ¾Æ´Ñ °³º° Ã³¸®*/
+		/*join ë¬¸ì‚¬ìš©í•˜ì§€ì•Šê³  ì—¬ëŸ¬ë²ˆ ì ‘ê·¼*/
 		Optional<VendorVo> vendorVo = vendorRepository.findById(vocVo.get().getVendorId());
 		Optional<CourierVo> courierVo = courierRepository.findByIdworker(vocVo.get().getWorkerId());
 		
 		VocDto vocDto = new VocDto(vocVo.get(), vendorVo.get(), courierVo.get());
 		
 		return ResponseMap.getResponseMap(ResponseCode.SUCCESS, vocDto);
+	}
+	
+	
+	public HashMap<String, Object> setState(Long vocId, String stateCode) throws Exception {
+		
+		if(penaltyRepository.findById(vocId).isEmpty()) {
+            return ResponseMap.getResponseMap(ResponseCode.FAILED_NOT_FOUND);
+        } else {
+        	VocVo vocVo = VocVo.builder()
+								.id(vocId)
+								.state(stateCode)
+								.build();
+			
+        	vocRepository.save(vocVo);
+			
+			return ResponseMap.getResponseMap(ResponseCode.SUCCESS);
+        }
 	}
 }

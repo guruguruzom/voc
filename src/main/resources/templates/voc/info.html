@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>voc 상세</title>
+</head>
+
+<body>
+	<li>voc 정보
+		<table border="1">
+			<tr>
+				<th>id</th>
+				<th>사유</th>
+				<th>배상대상</th>
+				<th>배상대상 확인여부</th>
+				<th>생성일</th>
+			</tr>
+			<tr th:each="body : ${response.body}">
+				<td th:text="${body.id}"></td>
+				<td th:text="${body.reason}"></td>
+				
+				<td th:switch="${body.target}">
+					<span th:case="courier">택배사</span>
+					<span th:case="vendor">고객사</span>
+				</td>
+				
+				<td th:switch="${body.state}">
+					<span th:case="none">확인안함</span>
+					<span th:case="confirm">확인</span>
+					<span th:case="objection">이의제기</span>
+					<span th:case="admit">과실인정</span>
+				</td>
+				
+				<td th:text="${body.createAt}"></td>
+			</tr>
+		</table>
+	</li>
+	<li>고객사 정보
+		<table border="1">
+			<tr>
+				<th>id</th>
+				<th>고객사명</th>
+				<th>연락처</th>
+				<th>주소</th>
+				<th>생성일</th>
+			</tr>
+			<tr th:each="vendor : ${response.body.vendor}">
+				<td th:text="${vendor.id}"></td>
+				<td th:text="${vendor.name}"></td>
+				<td th:text="${vendor.contact}"></td>
+				<td th:text="${vendor.address}"></td>
+				<td th:text="${vendor.createAt}"></td>
+			</tr>
+		</table>
+	</li>
+	
+	<li>배송 정보
+		<table border="1">
+			<tr>
+				<th>id</th>
+				<th>택배사명</th>
+				<th>연락처</th>
+				<th>주소</th>
+				<th>생성일</th>
+			</tr>
+			<tr th:each="courier : ${response.body.courier}">
+				<td th:text="${courier.id}"></td>
+				<td th:text="${courier.name}"></td>
+				<td th:text="${courier.contact}"></td>
+				<td th:text="${courier.address}"></td>
+				<td th:text="${courier.createAt}"></td>
+			</tr>
+		</table>
+		<li>기사 정보
+			<table border="1">
+				<tr>
+					<th>id</th>
+					<th>기사명</th>
+					<th>연락처</th>
+					<th>생성일</th>
+				</tr>
+				<tr th:each="worker : ${response.body.courier.worker}">
+					<td th:text="${worker.id}"></td>
+					<td th:text="${worker.name}"></td>
+					<td th:text="${worker.contact}"></td>
+					<td th:text="${worker.createAt}"></td>
+				</tr>
+			</table>
+		</li>
+		
+		<input type="button" value="배상정보 등록"/>
+		
+	</li>
+</body>
+
+</html>

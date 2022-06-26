@@ -14,19 +14,27 @@ public class PageController {
 	
 	private static Logger logger = LoggerFactory.getLogger(PageController.class);
 	
-	@GetMapping("/voc/list")
-	public String getVocList(Model model) {
+	@GetMapping("/home")
+	public String getHome(Model model) {
 		logger.info("voc list page : ");
 		
-		return "voc/list";
+		return "page/home";
 	}
 	
-	@GetMapping("/voc/info/{vocId}")
-	public String getVoc(Model model, @PathVariable("vocId") Long vocId) {
-		logger.info("voc page : ");
-		
-		model.addAttribute("vocId", vocId);
-
-		return "voc/info";
-	}
+//	
+//	@GetMapping("/voc/list")
+//	public String getVocList(Model model) {
+//		logger.info("voc list page : ");
+//		
+//		return "voc/list";
+//	}
+	
+//	@GetMapping("/voc/info/{vocId}")
+//	public String getVoc(Model model, @PathVariable("vocId") Long vocId) {
+//		logger.info("voc page : ");
+//		
+//		model.addAttribute("vocId", vocId);
+//
+//		return "voc/info";
+//	}
 }

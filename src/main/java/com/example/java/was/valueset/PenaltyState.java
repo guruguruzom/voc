@@ -1,6 +1,12 @@
 package com.example.java.was.valueset;
 
 public enum PenaltyState {
+	/*
+	 * none:확인안함
+	 * confirm:확인
+	 * objection:이의제기
+	 * admit:인정
+	 * */
 	NONE("none"),
 	CONFIRM("confirm"),
 	OBJECTION("objection"),

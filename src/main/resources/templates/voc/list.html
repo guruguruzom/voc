@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+
+<body>
+
+
+	<table border="1">
+		<tr>
+			<th>vocid</th>
+			<th>사유</th>
+			<th>배상대상</th>
+			<th>생성일</th>
+			<th>상세내용</th>
+		</tr>
+		<tr th:each="list : ${response.body}">
+			<td th:text="${list.id}">username</td>
+			<td th:text="${list.reason}">0</td>
+			<!--<td th:text="${lsit.target}">0</td>-->
+			
+			<td th:switch="${list.target}">
+				<span th:case="courier">택배사</span>
+				<span th:case="vendor">고객사</span>
+			</td>
+			
+			<td th:text="${list.createAt}">0</td>
+			<td><a th:href="@{/voc/{id}(id = ${list.id})}">상세</a></td>
+		</tr>
+	</table>
+
+</body>
+
+</html>
