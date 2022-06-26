@@ -9,15 +9,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.java.was.domain.PartnerDto;
+import com.example.java.was.domain.RegistDto;
 import com.example.java.was.domain.VocDto;
 import com.example.java.was.entity.CourierVo;
-import com.example.java.was.entity.PenaltyVo;
 import com.example.java.was.entity.VendorVo;
 import com.example.java.was.entity.VocVo;
+import com.example.java.was.entity.WorkerVo;
 import com.example.java.was.repository.CourierRepository;
-import com.example.java.was.repository.PenaltyRepository;
 import com.example.java.was.repository.VendorRepository;
 import com.example.java.was.repository.VocRepository;
+import com.example.java.was.repository.WorkerRepository;
 import com.example.java.was.service.impl.VocServiceImpl;
 import com.example.java.was.util.ResponseMap;
 import com.example.java.was.valueset.ResponseCode;
@@ -28,18 +30,27 @@ public class VocService implements VocServiceImpl{
 	private static Logger logger = LoggerFactory.getLogger(VocService.class);
 	
 	@Autowired VocRepository vocRepository;
-	@Autowired PenaltyRepository penaltyRepository;
 	@Autowired CourierRepository courierRepository; 
 	@Autowired VendorRepository vendorRepository;
+	@Autowired WorkerRepository workerRepository;
 	
-	public HashMap<String, Object> setVoc(VocDto vocDto)  throws Exception{
+	public HashMap<String, Object> getRegistInfo()  throws Exception {
+		
+		List<VendorVo> vendors = vendorRepository.findAll();
+		List<WorkerVo> workers = workerRepository.findAll();
+		PartnerDto registDto = new PartnerDto(vendors,workers);
+		
+		return ResponseMap.getResponseMap(ResponseCode.SUCCESS, registDto);
+	}
+	
+	
+	public HashMap<String, Object> setVoc(RegistDto registDto)  throws Exception {
 		
 		VocVo vocVo = VocVo.builder()
-					.userKey(vocDto.getUserKey())
-					.reason(vocDto.getReason())
-					.target(vocDto.getTarget())
-					.workerId(vocDto.getWorkerId())
-					.vendorId(vocDto.getVendorId())
+					.reason(registDto.getReason())
+					.target(registDto.getTarget())
+					.workerId(registDto.getWorkerId())
+					.vendorId(registDto.getVendorId())
 					.build();
 		
 		vocRepository.save(vocVo);
@@ -47,14 +58,14 @@ public class VocService implements VocServiceImpl{
 	}
 	
 	
-	public HashMap<String, Object> getVocList()  throws Exception{
+	public HashMap<String, Object> getVocList()  throws Exception {
 		List<VocVo> vocVos = vocRepository.findAll();
 		
 		return ResponseMap.getResponseMap(ResponseCode.SUCCESS, vocVos);
 	}
 	
 	
-	public HashMap<String, Object> getVoc(Long vocId)  throws Exception{
+	public HashMap<String, Object> getVoc(Long vocId)  throws Exception {
 		Optional<VocVo> vocVo = vocRepository.findById(vocId);
 		
 		if(vocVo.isEmpty()) {
@@ -73,7 +84,7 @@ public class VocService implements VocServiceImpl{
 	
 	public HashMap<String, Object> setState(Long vocId, String stateCode) throws Exception {
 		
-		if(penaltyRepository.findById(vocId).isEmpty()) {
+		if(vocRepository.findById(vocId).isEmpty()) {
             return ResponseMap.getResponseMap(ResponseCode.FAILED_NOT_FOUND);
         } else {
         	VocVo vocVo = VocVo.builder()

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="UTF-8">
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/common.js}"></script>
+	<title>voc 등록</title>
+</head>
+
+<body>
+	<script>
+		var vocSummit = function() {
+			vocDto = {
+				reason:$("#reason").val(),
+				target:$("#target option:selected").val(),
+				vendorId:$("#vendor option:selected").val(),
+				workerId:$("#worker option:selected").val()
+			}
+			
+			commonJS.callAjax('/api/voc/regist', 'POST', JSON.stringify(vocDto), 
+			(response, status, xhr) => {
+				if(response.header.code == 100){
+					alert("voc가 등록되었습니다.");
+				}
+				console.log(response, status, xhr);
+			}, (xhr, status, errorThrown) => {
+				alert("voc등록이 실패했습니다.");
+			})
+		}
+		
+		
+	</script>
+		
+		<div id="compensation">
+			<div>
+				<span>
+					사유 :
+				</span>
+				<span>
+					<input id="reason" type="text" maxlength="6">
+				</span>
+			</div>
+			
+			<div>
+				<span>
+					배상 대상 :
+				</span>
+				<span>
+					<select id="target">
+					    <option value="courier">배송사</option>
+					    <option value="vendor">고객사</option>
+					</select>
+				</span>
+			</div>
+			
+			<div>
+				<span>
+					배송기사 :
+				</span>
+				<span>
+					<select id="vendor">
+						 <option th:each="list : ${response.body.vendors}" th:value="${list.id}" th:text="${list.name}"></option>
+					</select>
+				</span>
+			</div>
+			<div>
+				<span>
+					고객사 :
+				</span>
+				<span>
+					<select id="worker">
+						<option th:each="list : ${response.body.workers}" th:value="${list.id}" th:text="${list.name}"></option>
+					</select>
+				</span>
+			</div>
+		
+			<button type="button" onclick="vocSummit()">voc 등록</button>
+	    </div>
+	</li>
+</body>
+
+</html>

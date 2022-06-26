@@ -2,6 +2,7 @@ package com.example.java.was.domain;
 
 import java.util.Date;
 
+import com.example.java.was.entity.CompensationVo;
 import com.example.java.was.entity.CourierVo;
 import com.example.java.was.entity.VendorVo;
 import com.example.java.was.entity.VocVo;
@@ -20,6 +21,7 @@ public class VocDto {
 	private Long workerId;
 	private Long vendorId;
 	private Date createAt;
+	private CompensationVo compensation;
 	private VendorVo vendor;
 	private CourierVo courier;
 	
@@ -29,6 +31,7 @@ public class VocDto {
 		this.target = vocVo.getTarget();
 		this.state = vocVo.getState();
 		this.createAt = vocVo.getCreateAt();
+		this.compensation = vocVo.getCompensation();
 		this.vendor = vendorVo;
 		this.courier = courierVo;
 	}

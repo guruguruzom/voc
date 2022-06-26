@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.java.was.controller.PenaltyController;
 import com.example.java.was.domain.CompensationDto;
 import com.example.java.was.entity.CompensationVo;
 import com.example.java.was.repository.CompensationRepository;
@@ -25,20 +24,16 @@ public class CompensationService implements CompensationServiceImpl{
 	
 	public HashMap<String, Object> setCompensation(CompensationDto compensationDto) {
 		
-		if(compensationRepository.findByVocIdAndPenaltyId(compensationDto.getVocId(),compensationDto.getPenaltyId()).isEmpty()) { // 값 존재여부 확인
-            return ResponseMap.getResponseMap(ResponseCode.FAILED_EXISTS);
-        } else {
-        	CompensationVo compensationVo = CompensationVo.builder()
-								.vocId(compensationDto.getVocId())
-								.penaltyId(compensationDto.getPenaltyId())
-								.reparations(compensationDto.getReparations())
-								.comment(compensationDto.getComment())
-								.build();
-			
-			compensationRepository.save(compensationVo);
-			
-			return ResponseMap.getResponseMap(ResponseCode.SUCCESS);
-        }
+    	CompensationVo compensationVo = CompensationVo.builder()
+							.id(compensationDto.getVocId())
+							.reparations(compensationDto.getReparations())
+							.comment(compensationDto.getComment())
+							.build();
+		
+		compensationRepository.save(compensationVo);
+		
+		return ResponseMap.getResponseMap(ResponseCode.SUCCESS);
+        
 	}	
 	
 	public HashMap<String, Object> getCompensationList() throws Exception{

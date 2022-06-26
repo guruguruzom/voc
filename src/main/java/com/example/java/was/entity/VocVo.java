@@ -11,13 +11,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Data
 @DynamicInsert
-@AllArgsConstructor
+///@AllArgsConstructor
 @EnableJpaAuditing
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="voc")
 public class VocVo {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
 	private String userKey;
@@ -29,14 +30,14 @@ public class VocVo {
 	private Date createAt;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinTable(name = "penalty",
-            joinColumns = @JoinColumn(name="voc_id"),
-            inverseJoinColumns = @JoinColumn(name="id")
-            )
-	private PenaltyVo penalty;
+//	@JoinTable(name = "compensation",
+//            joinColumns = @JoinColumn(name="voc_id"),
+//            inverseJoinColumns = @JoinColumn(name = "id"))
+	@JoinColumn(name = "id")
+	private CompensationVo compensation;
 	
 	@Builder
-	public VocVo(Long id,String userKey,String reason,String target,Long workerId,Long vendorId,String state,Date createAt) {
+	public VocVo(Long id,String userKey,String reason,String target,Long workerId,Long vendorId,String state,Date createAt,CompensationVo compensation) {
 		this.id = id;
 		this.userKey = userKey;
 		this.reason = reason;
@@ -45,5 +46,6 @@ public class VocVo {
 		this.vendorId = vendorId;
 		this.state = state;
 		this.createAt = createAt;
+		this.compensation = compensation;
 	}
 }

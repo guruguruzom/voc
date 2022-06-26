@@ -2,11 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
 	<meta charset="UTF-8">
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/common.js}"></script>
 	<title>voc 상세</title>
 </head>
 
 <body>
+	<script>
+		var compensationSummit = function() {
+			
+			var vocId = [[${response.body.id}]];
+			
+			compensationDto = {
+				reparations:$("#reparations").val(),
+				comment:$("#comment").val()
+			}
+			
+			commonJS.callAjax('/api/compensation/regist/' + vocId, 'POST', JSON.stringify(compensationDto), 
+			(response, status, xhr) => {
+				if(response.header.code == 100){
+					alert("배상정보가 등록되었습니다.");
+				}
+				console.log(response, status, xhr);
+			}, (xhr, status, errorThrown) => {
+				alert("배상정보등록이 실패했습니다.");
+			})
+		}
+		
+		
+	</script>
+
+
 	<li>voc 정보
 		<table border="1">
 			<tr>
@@ -89,8 +117,33 @@
 			</table>
 		</li>
 		
-		<input type="button" value="배상정보 등록"/>
-		
+		<br>
+		<div id="compensation">
+			<div>
+				<span>
+					배상금액
+				</span>
+				<span>
+					<input id="reparations" th:if="${response.body.compensation != null}"
+						th:value="${response.body.compensation.reparations}" type="number" maxlength="6">
+					<input id="reparations" th:unless="${response.body.compensation != null}" 
+						type="number" maxlength="6">
+				</span>
+			</div>
+			<div>
+				<span>
+					배상내용
+				</span>
+				<span>
+					<input id="comment" th:if="${response.body.compensation != null}" 
+						th:value="${response.body.compensation.comment}" type="text" maxlength="16" style="width: 800px;">
+					<input id="comment" th:unless="${response.body.compensation != null}" 
+						type="text" maxlength="16" style="width: 800px;">
+				</span>
+			</div>
+			
+			<button type="button" onclick="compensationSummit()">배상정보 등록</button>
+	    </div>
 	</li>
 </body>
 

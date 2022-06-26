@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,25 +25,19 @@ public class CompensationController {
 	@Autowired CompensationService compensationService;
 	
 	/***
-	 * 3000 : πËªÛ ¡§∫∏ µÓ∑œ
+	 * 3000 : Î∞∞ÏÉÅÏ†ïÎ≥¥ Îì±Î°ù
 	 * @param compensationDto
 	 * @return
 	 * @throws Exception
 	 */
-	@PostMapping("/compensation/regist")
-    public HashMap<String, Object> regist(@RequestBody CompensationDto compensationDto) throws Exception {
+	@PostMapping("/compensation/regist/{vocId}")
+    public HashMap<String, Object> regist(@RequestBody CompensationDto compensationDto,@PathVariable("vocId") Long vocId) throws Exception {
 		
-		logger.info("compensation regist : " + compensationDto.toString());
+		logger.info("compensation regist : " + vocId);
 	
 		return compensationService.setCompensation(compensationDto);
     }
 	
-	@GetMapping("/compensation/list")
-	public HashMap<String, Object> registration() throws Exception {
-		
-		logger.info("compensation list : ");
 	
-		return compensationService.getCompensationList();
-    }
 	
 }

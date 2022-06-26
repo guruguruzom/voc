@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.java.was.domain.RegistDto;
 import com.example.java.was.domain.VocDto;
 import com.example.java.was.service.VocService;
 
@@ -37,11 +38,11 @@ public class VocController {
 	 */
 	
 	@PostMapping("/voc/regist")
-    public HashMap<String, Object> regist(@RequestBody VocDto vocDto) throws Exception {
+    public HashMap<String, Object> regist(@RequestBody RegistDto registDto) throws Exception {
 		
-		logger.info("voc regist : " + vocDto.toString());
+		logger.info("voc regist : " + registDto.toString());
 		
-		return vocService.setVoc(vocDto);
+		return vocService.setVoc(registDto);
     }
 	
 	/***

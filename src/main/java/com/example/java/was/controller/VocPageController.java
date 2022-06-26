@@ -21,6 +21,19 @@ public class VocPageController {
 	
 	@Autowired VocService vocService;
 	
+	
+	@GetMapping("/voc/regist")
+	public String regist(Model model) throws Exception {
+		
+		logger.info("compensation list : ");
+		
+		HashMap<String, Object> map = vocService.getRegistInfo();
+		
+		model.addAttribute("response", map);
+	
+		return "voc/regist";
+    }
+	
 	/***
 	 * 1001 : voc list
 	 * @return
@@ -56,4 +69,15 @@ public class VocPageController {
 		
 		return "voc/info";
     }
+//	@ResponseBody
+//	@GetMapping("/voc/{vocId}")
+//    public HashMap<String, Object> getVoc(@PathVariable("vocId") Long vocId) throws Exception  {
+//		
+//		logger.info("voc detail : " + vocId);
+//		
+//		HashMap<String, Object> map = vocService.getVoc(vocId);
+//		
+//		
+//		return map;
+//    }
 }
