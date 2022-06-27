@@ -2,6 +2,8 @@ package com.example.java.was.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +14,7 @@ import com.example.java.was.domain.CompensationDto;
 import com.example.java.was.entity.CompensationVo;
 import com.example.java.was.repository.CompensationRepository;
 import com.example.java.was.service.impl.CompensationServiceImpl;
+import com.example.java.was.util.DataTimeUtil;
 import com.example.java.was.util.ResponseMap;
 import com.example.java.was.valueset.ResponseCode;
 
@@ -22,12 +25,13 @@ public class CompensationService implements CompensationServiceImpl{
 	
 	@Autowired CompensationRepository compensationRepository; 
 	
-	public HashMap<String, Object> setCompensation(CompensationDto compensationDto) {
+	public HashMap<String, Object> setCompensation(Long vocId, CompensationDto compensationDto) {
 		
     	CompensationVo compensationVo = CompensationVo.builder()
-							.id(compensationDto.getVocId())
+							.id(vocId)
 							.reparations(compensationDto.getReparations())
 							.comment(compensationDto.getComment())
+							.createAt(DataTimeUtil.getTime(LocalDateTime.now()))
 							.build();
 		
 		compensationRepository.save(compensationVo);

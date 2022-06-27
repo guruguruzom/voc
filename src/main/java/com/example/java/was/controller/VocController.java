@@ -49,7 +49,7 @@ public class VocController {
 	 * @throws Exception
 	 */
 	@PutMapping("/voc/state/{vocId}")
-	public HashMap<String, Object> registration(@PathVariable("vocId") Long vocId,
+	public HashMap<String, Object> stateModify(@PathVariable("vocId") Long vocId,
 			@RequestParam(value="stateCode",required=false, defaultValue="none") String stateCode) throws Exception {
 		
 		logger.info("state set : " + vocId);

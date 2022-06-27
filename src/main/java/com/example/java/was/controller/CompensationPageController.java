@@ -25,7 +25,7 @@ public class CompensationPageController {
 	 * @throws Exception
 	 */
 	@GetMapping("/compensation/list")
-	public String l(Model model) throws Exception {
+	public String getCompensationList(Model model) throws Exception {
 		
 		logger.info("compensation list : ");
 		

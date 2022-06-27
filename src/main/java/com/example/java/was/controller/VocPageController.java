@@ -20,12 +20,12 @@ public class VocPageController {
 	@Autowired VocService vocService;
 	
 	/***
-	 * 1000 : voc 등록
+	 * 1010 : voc 등록
 	 * @return
 	 * @throws Exception
 	 */
 	@GetMapping("/voc/regist")
-	public String regist(Model model) throws Exception {
+	public String getVocRegistPage(Model model) throws Exception {
 		
 		logger.info("compensation list : ");
 		

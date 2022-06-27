@@ -34,7 +34,7 @@ public class CompensationController {
 		
 		logger.info("compensation regist : " + vocId);
 	
-		return compensationService.setCompensation(compensationDto);
+		return compensationService.setCompensation(vocId,compensationDto);
     }
 	
 }

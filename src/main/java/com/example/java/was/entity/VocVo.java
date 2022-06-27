@@ -34,6 +34,13 @@ public class VocVo {
 	private CompensationVo compensation;
 	
 	@Builder
+	public VocVo(Long id,String state) {
+		this.id = id;
+		this.state = state;
+	}
+	
+	
+	@Builder
 	public VocVo(Long id,String userKey,String reason,String target,Long workerId,Long vendorId,String state,Date createAt,CompensationVo compensation) {
 		this.id = id;
 		this.userKey = userKey;

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.example.java.was.entity.CourierVo;
 
 @Repository
-public interface CourierRepository  extends JpaRepository<CourierVo, Long>{
+public interface CourierRepository extends JpaRepository<CourierVo, Long>{
 	@Query(value="SELECT c FROM courier c "
 			+ "INNER JOIN FETCH c.worker w "
 			+ "WHERE w.id=:workerId")
