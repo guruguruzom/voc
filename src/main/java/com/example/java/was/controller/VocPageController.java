@@ -10,14 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.example.java.was.service.VocService;
+import com.example.java.was.service.impl.VocServiceImpl;
 
 @Controller
 public class VocPageController {
 	
 	private static Logger logger = LoggerFactory.getLogger(VocPageController.class);
 	
-	@Autowired VocService vocService;
+	@Autowired VocServiceImpl vocService;
 	
 	/***
 	 * 1010 : voc 등록

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.java.was.domain.VocDto;
-import com.example.java.was.service.VocService;
+import com.example.java.was.service.impl.VocServiceImpl;
 
 @RestController
 @ResponseBody
@@ -24,7 +24,7 @@ public class VocController {
 
 	private static Logger logger = LoggerFactory.getLogger(VocController.class);
 	
-	@Autowired VocService vocService;
+	@Autowired VocServiceImpl vocService;
 	
 	/***
 	 * 1000 : voc 등록

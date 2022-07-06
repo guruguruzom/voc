@@ -9,14 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.example.java.was.service.CompensationService;
+import com.example.java.was.service.impl.CompensationServiceImpl;
 
 
 @Controller
 public class CompensationPageController {
 	private static Logger logger = LoggerFactory.getLogger(CompensationPageController.class);
 	
-	@Autowired CompensationService compensationService;
+	@Autowired CompensationServiceImpl compensationService;
 	
 	/***
 	 * 3100 : 배상정보 리스트 페이지

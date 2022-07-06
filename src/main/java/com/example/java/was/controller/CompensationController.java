@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.java.was.domain.CompensationDto;
-import com.example.java.was.service.CompensationService;
+import com.example.java.was.service.impl.CompensationServiceImpl;
 
 @RestController
 @ResponseBody
@@ -21,7 +21,7 @@ import com.example.java.was.service.CompensationService;
 public class CompensationController {
 	private static Logger logger = LoggerFactory.getLogger(CompensationController.class);
 	
-	@Autowired CompensationService compensationService;
+	@Autowired CompensationServiceImpl compensationService;
 	
 	/***
 	 * 3000 : 배상정보 등록
