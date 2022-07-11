@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 public class CourierVo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long courierId;
 	private String name;
 	private String contact;
 	private String address;

@@ -33,7 +33,7 @@ public class VocInfoDto extends VocDto{
 	private CourierVo courier;
 	
 	public VocInfoDto(VocVo vocVo, VendorVo vendorVo, CourierVo courierVo) {
-		this.id = vocVo.getId();
+		this.id = vocVo.getVocId();
 		this.reason = vocVo.getReason();
 		this.target = vocVo.getTarget();
 		this.state = vocVo.getState();

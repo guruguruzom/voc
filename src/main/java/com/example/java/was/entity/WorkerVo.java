@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 public class WorkerVo {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long workerId;
 	private String name;
 	private String contact;
 	@Column (name = "courier_id")

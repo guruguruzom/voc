@@ -79,9 +79,11 @@ public class VocService implements VocServiceImpl{
 		 *충돌 발생 시 문제점이 없어보여 트랜젝션을 사용하지 않았습니다.
 		 * */
 		Optional<VendorVo> vendorVo = vendorRepository.findById(vocVo.get().getVendorId());
-		Optional<CourierVo> courierVo = courierRepository.findByIdworker(vocVo.get().getWorkerId());
+		List<CourierVo> courierVo = courierRepository.findByIdworker(vocVo.get().getWorkerId());
 		
-		VocInfoDto vocDto = new VocInfoDto(vocVo.get(), vendorVo.get(), courierVo.get());
+		
+		VocInfoDto vocDto = new VocInfoDto(vocVo.get(), vendorVo.get(), courierVo.get(0));
+		
 		
 		return ResponseMap.getResponseMap(ResponseCode.SUCCESS, vocDto);
 	}

@@ -28,7 +28,7 @@ public class CompensationService implements CompensationServiceImpl{
 	public HashMap<String, Object> setCompensation(Long vocId, CompensationDto compensationDto) {
 		
     	CompensationVo compensationVo = CompensationVo.builder()
-							.id(vocId)
+							.compensationId(vocId)
 							.reparations(compensationDto.getReparations())
 							.comment(compensationDto.getComment())
 							.createAt(DataTimeUtil.getTime(LocalDateTime.now()))

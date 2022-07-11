@@ -19,7 +19,7 @@ public class VocVo {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private Long vocId;
 	
 	private String userKey;
 	private String reason;
@@ -30,19 +30,19 @@ public class VocVo {
 	private Date createAt;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "compensation_id")
 	private CompensationVo compensation;
 	
 	@Builder
 	public VocVo(Long id,String state) {
-		this.id = id;
+		this.vocId = id;
 		this.state = state;
 	}
 	
 	
 	@Builder
-	public VocVo(Long id,String userKey,String reason,String target,Long workerId,Long vendorId,String state,Date createAt,CompensationVo compensation) {
-		this.id = id;
+	public VocVo(Long vocId,String userKey,String reason,String target,Long workerId,Long vendorId,String state,Date createAt,CompensationVo compensation) {
+		this.vocId = vocId;
 		this.userKey = userKey;
 		this.reason = reason;
 		this.target = target;

@@ -26,7 +26,7 @@ public class VendorVo {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long vendorId;
 	private String name;
 	private String contact;
 	private String address;

@@ -24,14 +24,14 @@ import lombok.NoArgsConstructor;
 public class CompensationVo {
 	@Id
 	@Column(name = "id")
-	private Long id;
+	private Long compensationId;
 	private Integer reparations;
 	private String comment;
 	private Date createAt;
 	
 	@Builder
-	public CompensationVo(Long id,Integer reparations,String comment,Date createAt) {
-		this.id = id;
+	public CompensationVo(Long compensationId,Integer reparations,String comment,Date createAt) {
+		this.compensationId = compensationId;
 		this.reparations = reparations;
 		this.comment = comment;
 		this.createAt = createAt;
